@@ -9,4 +9,10 @@ public class AddressBook {
     public AddressBook(String name) {
         this.name = name;
     }
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+    }
+
+    
 }
