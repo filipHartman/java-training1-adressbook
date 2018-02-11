@@ -2,13 +2,13 @@ package AdressBook;
 
 import java.util.Objects;
 
-public class Adress {
+public class Address {
     private String person;
     private String city;
     private String street;
     private String houseNo;
 
-    public Adress(String person, String city, String street, String houseNo) {
+    public Address(String person, String city, String street, String houseNo) {
         this.person = person;
         this.city = city;
         this.street = street;
@@ -29,12 +29,12 @@ public class Adress {
         if(obj == null) {
             return false;
         }
-        if(!(obj instanceof Adress)) {
+        if(!(obj instanceof Address)) {
             return false;
         }
-        Adress adress = (Adress) obj;
+        Address address = (Address) obj;
 
-        return Objects.equals(getFullAddress(), adress.getFullAddress());
+        return Objects.equals(getFullAddress(), address.getFullAddress());
     }
 
     public int hashCode() {
