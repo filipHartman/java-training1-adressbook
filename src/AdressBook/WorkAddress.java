@@ -28,9 +28,9 @@ public class WorkAddress extends Address {
         }
         WorkAddress address = (WorkAddress) obj;
 
-        return Objects.equals(getFullAddress(), address);
+        return Objects.equals(getFullAddress(), address.getFullAddress());
     }
-    
+
     public int hashCode() {
         return Objects.hash(getFullAddress());
     }
