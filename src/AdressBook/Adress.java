@@ -12,4 +12,10 @@ public class Adress {
         this.street = street;
         this.houseNo = houseNo;
     }
+
+    public String getFullAddress() {
+        return String.format(
+          "%s, %s, %s %s", person, city, street, houseNo
+        );
+    }
 }
