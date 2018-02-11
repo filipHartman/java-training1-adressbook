@@ -1,5 +1,7 @@
 package AdressBook;
 
+import java.util.Objects;
+
 public class Adress {
     private String person;
     private String city;
@@ -17,5 +19,21 @@ public class Adress {
         return String.format(
           "%s, %s, %s %s", person, city, street, houseNo
         );
+    }
+
+    public boolean equals(Object obj) {
+        if(this == obj) {
+            return true;
+        }
+
+        if(obj == null) {
+            return false;
+        }
+        if(!(obj instanceof Adress)) {
+            return false;
+        }
+        Adress adress = (Adress) obj;
+        
+        return Objects.equals(getFullAddress(), adress.getFullAddress());
     }
 }
