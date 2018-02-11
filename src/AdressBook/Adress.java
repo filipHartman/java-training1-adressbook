@@ -33,7 +33,11 @@ public class Adress {
             return false;
         }
         Adress adress = (Adress) obj;
-        
+
         return Objects.equals(getFullAddress(), adress.getFullAddress());
+    }
+
+    public int hashCode() {
+        return Objects.hash(getFullAddress());
     }
 }
