@@ -18,6 +18,7 @@ public class AddressBook {
 
     public ArrayList<Address> find(String searchPhrase) throws IndexOutOfBoundsException {
         ArrayList<Address> result = new ArrayList<>();
+        searchPhrase = searchPhrase.trim();
         String pattern = ".*" + searchPhrase.toUpperCase() + ".*";
         Pattern p = Pattern.compile(pattern);
         for (Address address : addresses) {
