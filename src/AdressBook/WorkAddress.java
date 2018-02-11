@@ -7,5 +7,8 @@ public class WorkAddress extends Address {
         super(name, city, street, houseNo);
         this.company = company;
     }
-    
+
+    public String getFullAddress() {
+        return String.format("%s, %s", super.getFullAddress(), company);
+    }
 }
