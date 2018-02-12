@@ -2,7 +2,7 @@ package AdressBook;
 
 import java.util.Objects;
 
-public class Address {
+public class Address implements Comparable<Address>{
     private String person;
     private String city;
     private String street;
@@ -39,5 +39,13 @@ public class Address {
 
     public int hashCode() {
         return Objects.hash(getFullAddress());
+    }
+
+    public int compareTo(Address o) {
+        int comparePerson = person.compareTo(o.person);
+        if (comparePerson == 0) {
+            return city.compareTo(o.city);
+        }
+        return comparePerson;
     }
 }
