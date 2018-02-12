@@ -12,6 +12,14 @@ public class AddressBook {
         this.name = name;
     }
 
+    public int getAddressesSize() {
+        return addresses.size();
+    }
+
+    public ArrayList<Address> getAddresses() {
+        return addresses;
+    }
+
     public void addAddress(Address address) {
         addresses.add(address);
     }
@@ -30,5 +38,43 @@ public class AddressBook {
             }
         }
         return result;
+    }
+
+    public void quickSort(int lowerIndex, int higherIndex) {
+        if (!(addresses.isEmpty())) {
+            int i = lowerIndex;
+            int j = higherIndex;
+
+            int pivotIndex = lowerIndex + (higherIndex- lowerIndex)/2;
+            Address pivot = addresses.get(pivotIndex);
+
+            while (i<= j) {
+                while(addresses.get(i).compareTo(pivot) < 0){
+                    i++;
+                }
+                while(addresses.get(j).compareTo(pivot) > 0){
+                    j--;
+                }
+                if (i <= j) {
+                    exchangeAddresses(i, j);
+                    i++;
+                    j--;
+                }
+            }
+
+            if (lowerIndex < j) {
+                quickSort(lowerIndex, j);
+            }
+
+            if (i < higherIndex) {
+                quickSort(i, higherIndex);
+            }
+        }
+    }
+
+    private void exchangeAddresses(int i, int j) {
+        Address temp = addresses.get(i);
+        addresses.set(i, addresses.get(j));
+        addresses.set(j, temp);
     }
 }
