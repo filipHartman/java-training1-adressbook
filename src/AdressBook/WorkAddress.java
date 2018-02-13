@@ -10,6 +10,10 @@ public class WorkAddress extends Address {
         this.company = company;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
     public String getFullAddress() {
         return String.format("%s, %s", super.getFullAddress(), company);
     }

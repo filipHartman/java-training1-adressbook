@@ -15,6 +15,22 @@ public class Address implements Comparable<Address>{
         this.houseNo = houseNo;
     }
 
+    public String getPerson() {
+        return person;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getHouseNo() {
+        return houseNo;
+    }
+
     public String getFullAddress() {
         return String.format(
           "%s, %s, %s %s", person, city, street, houseNo
