@@ -1,9 +1,6 @@
 package AdressBook;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +19,10 @@ public class AddressBook {
 
     public ArrayList<Address> getAddresses() {
         return addresses;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addAddress(Address address) {
@@ -122,5 +123,39 @@ public class AddressBook {
             address = new WorkAddress(person, city, street, houseNo, company);
         }
         return address;
+    }
+
+    public void saveToCSV() {
+        String header = "person, city, street, houseNo, company\n";
+        String filePath = "out/" + getName() + ".csv";
+
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(filePath);
+            fw.write(header);
+            for (Address address : addresses) {
+                exportAddress(address, fw);
+            }
+            fw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void exportAddress(Address address, FileWriter fw) throws IOException{
+        String commaDelimiter = ",";
+        String newLineSeparator = "\n";
+        StringBuilder addressData = new StringBuilder();
+        addressData.append(address.getPerson() + commaDelimiter);
+        addressData.append(address.getCity() + commaDelimiter);
+        addressData.append(address.getStreet() + commaDelimiter);
+        addressData.append(address.getHouseNo() + commaDelimiter);
+        if (address instanceof WorkAddress) {
+            addressData.append(((WorkAddress) address).getCompany());
+        }
+        addressData.append(newLineSeparator);
+        fw.write(addressData.toString());
     }
 }
